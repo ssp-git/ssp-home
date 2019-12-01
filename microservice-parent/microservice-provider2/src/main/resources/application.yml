@@ -1,0 +1,36 @@
+server:
+  port: 8009
+
+mybatis:
+  config-location: "classpath:mybatis/mybatis.cfg.xml"        # mybatis�����ļ�����·��
+  mapper-locations:
+    - "classpath:mybatis/mapper/**/*.xml"                     # mapperӳ���ļ�
+  type-aliases-package: com.lzj.springcloud.entity            # ���������ڰ�
+
+spring:
+  application:
+    name: microservicecloud-provider                          #΢���������
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver                # mysql������
+    type: com.alibaba.druid.pool.DruidDataSource              # ��ǰ����Դ��������
+    url: "jdbc:mysql://localhost:3307/test"                    # ���ݿ�����
+    username: root
+    password: lzjlzj
+    dbcp2:
+      initial-size: 5                                         # ��ʼ��������
+      max-total: 5                                            # ���������
+      max-wait-millis: 200                                    # �ȴ����ӻ�ȡ�����ʱʱ��
+      min-idle: 5
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9001/eureka,http://localhost:9002/eureka/
+  instance:
+      instance-id: microservicecloud-provider8009 #�Զ������������Ϣ
+      prefer-ip-address: true   #����·��������ʾIP��ַ
+info:
+  app.name: microservicecloud-provider
+  company.name: www.lzj.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
